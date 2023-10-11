@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none; /*prevent copy paste, to allow, change 'none' to 'text'*/
+  background-color: aliceblue;
+  font-family: system-ui, -apple-system, -apple-system-font, "Segoe UI",
+    "Roboto", sans-serif;
+  height: 100vh;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  width: 100vw;
+}
+
+/* Portrait layout (default) */
+.app {
+  background: url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+  position: absolute; /* position in the center of the screen */
+  left: 50%;
+  top: 50%;
+  height: 50px; /* text area height */
+  width: 225px; /* text area width */
+  text-align: center;
+  padding: 180px 0px 0px 0px; /* image height is 200px (bottom 20px are overlapped with text) */
+  margin: -115px 0px 0px -112px; /* offset vertical: half of image height and text area height */
+  /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width: 400px) {
+  .app {
+    background-position: left center;
+    padding: 75px 0px 75px 170px; /* padding-top + padding-bottom + text area = image height */
+    margin: -90px 0px 0px -198px; /* offset vertical: half of image height */
+    /* offset horizontal: half of image width and text area width */
+  }
+}
+
+#deviceready.ready .event.listening {
+  display: none;
+}
+#deviceready.ready .event.received {
+  display: block;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.main-container {
+  height: 40rem;
+  background: linear-gradient(to left bottom, yellow, orange);
+  font-weight: 800;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 70%;
+  max-width: 27rem;
+  color: rgb(186, 169, 16);
+  text-align: center;
+  display: grid;
+  gap: 10px;
+  place-content: center;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  height: 20rem;
+  padding: 1rem;
+  box-shadow: 2px 10px 7px rgba(0, 0, 0, 0.4);
+}
+
+.content .input {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  outline: none;
+  height: 2rem;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding-left: 10px;
+}
+
+.generateWords {
+  position: absolute;
+  width: 60%;
+  bottom: 10%;
+  left: 20%;
+  padding: 0.6rem;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(108, 108, 6);
+}
+
+.generateWords:active {
+  transform: scale(0.96);
+}
+
+.generateWords:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 400ms ease;
+}
+.generateWords:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* Words content style */
+.words-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  min-height: 100vh;
+  height: auto;
+  background: #000;
+  color: #f4f4f4;
+}
+.words-found {
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin: 1rem 0;
+}
+
+.info {
+  margin-bottom: 0.5px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.rate {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1em;
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading {
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.word {
+  background-color: #f4f4f4;
+  width: 90%;
+  max-width: 40em;
+  margin-top: 0.4rem;
+  color: #000;
+  padding: 0.6em;
+  font-weight: bold;
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.link-btn {
+  text-decoration: none;
+  display: inline-block;
+  color: #f4f4f4;
+  font-weight: bold;
+  width: 50%;
+  max-width: 20rem;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: 20rem;
+  margin-top: 2rem;
+}
+
+.link-btn:hover {
+  opacity: 0.8;
+  font-weight: bolder;
+  background-color: #f4f4f4;
+  color: #000;
+  transition: all 800ms ease-in-out;
+}
+
+.link-btn:active {
+  transform: scale(0.96);
+}
